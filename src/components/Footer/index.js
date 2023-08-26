@@ -20,7 +20,7 @@ export default function Footer () {
                 </Typography>
             </Grid>
             {
-                !loading && !!response.total_count &&
+                (!loading || !!response.total_count) &&
                 <Grid item>
                     <Pagination
                         page={page}
