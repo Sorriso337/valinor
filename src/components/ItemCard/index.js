@@ -8,7 +8,7 @@ export default function ItemCard ({ item }) {
   return (
     <Grid
       onClick={() => window.open(item.html_url, "_blank")}
-      style={{cursor:'pointer',backgroundColor: '#666', flexDirection:'center', alignItems:'center', border: '0.5px groove gray'}}
+      style={{cursor:'pointer',backgroundColor: '#666', flexDirection:'center', alignItems:'center', maxWidth:'90%', border: '0.5px groove gray'}}
       margin={4}
       borderRadius={2}
       padding={2}
@@ -19,7 +19,7 @@ export default function ItemCard ({ item }) {
           <img alt='' src={ item.owner.avatar_url } style={{width:90, height:90, borderRadius: 90}}/>
         </Grid>
         <Grid zeroMinWidth item xs={10}>
-          <Typography fontFamily='sans-serif' variant='h3' style={{color:'white'}}>{ item.name }</Typography>
+          <Typography noWrap fontFamily='sans-serif' variant='h3' style={{color:'white'}}>{ item.name }</Typography>
           <Typography marginLeft={1} marginBottom={1} color='#CCC'>{ item.description }</Typography>
           <Chip style={{marginLeft:16}} color='primary' label={mensagensLinguagem} />
           <Chip style={{marginLeft:16}} color='warning' label={`⭐: ${ item.stargazers_count }`}/>
