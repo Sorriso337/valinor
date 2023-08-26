@@ -1,26 +1,30 @@
+import { Chip, Grid, Typography } from "@mui/material";
 import React from "react";
 
-import { 
-    ContainerRepository,
-    StarsInRepository,
-    LinkRepository
-} from './styles'
-
 export default function ItemCard ({ item }) {
-  
+
+  const mensagensLinguagem = item.language || "Sem linguagem principal"
+
   return (
-      <>
-
-        <LinkRepository target="_blank" href={ item.html_url } > 
-          <ContainerRepository >  
-                <StarsInRepository  > { item.stargazers_count } ⭐ No repositório</StarsInRepository> 
-                <h1 style={{color:'white'}}>{ item.name }</h1>
-                <h2 style={{color:'#dadada'}}>{ item.description }</h2>
-                <img src={ item.owner.avatar_url } style={{width:90, height:90, borderRadius: 90, padding: 4, float:'right'}}/>
-                {item.language ? <p style={{padding:32}}>Principal linguagem do projeto é { item.language }</p> :<p style={{padding:32}}>O projeto não tem uma linguagem principal apontada</p>}
-          </ContainerRepository>
-        </LinkRepository>
-
-      </>
+    <Grid
+      wrap="nowrap"
+      onClick={() => window.open(item.html_url, "_blank")}
+      style={{cursor:'pointer',backgroundColor: '#666', flexDirection:'center', alignItems:'center', border: '0.5px groove gray'}}
+      margin={4}
+      borderRadius={2}
+      padding={2}
+      item
+      container
+      xs={12}>
+        <Grid item xs={2}>
+          <img alt='' src={ item.owner.avatar_url } style={{width:90, height:90, borderRadius: 90}}/>
+        </Grid>
+        <Grid zeroMinWidth item xs={10}>
+          <Typography fontFamily='sans-serif' variant='h3' style={{color:'white'}}>{ item.name }</Typography>
+          <Typography marginLeft={1} marginBottom={1} color='#CCC'>{ item.description }</Typography>
+          <Chip style={{marginLeft:16}} color='primary' label={mensagensLinguagem} />
+          <Chip style={{marginLeft:16}} color='warning' label={`⭐: ${ item.stargazers_count }`}/>
+        </Grid>
+    </Grid>
   );
 }
