@@ -7,7 +7,6 @@ export default function ItemCard ({ item }) {
 
   return (
     <Grid
-      wrap="nowrap"
       onClick={() => window.open(item.html_url, "_blank")}
       style={{cursor:'pointer',backgroundColor: '#666', flexDirection:'center', alignItems:'center', border: '0.5px groove gray'}}
       margin={4}

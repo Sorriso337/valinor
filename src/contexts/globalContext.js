@@ -8,15 +8,16 @@ export const GlobalProvider = (props) => {
     const [text, setText] = useState("Node")
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState([])
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
        makeRequest()
-    },[])
+    },[page])
 
     const makeRequest = async () => {
         try{
             setLoading(true)
-            const res = await api.get(`/search/repositories?q=${text}`)
+            const res = await api.get(`/search/repositories?q=${text}&page=${page}`)
             setResponse(res.data)
         }
         catch(error){
@@ -40,6 +41,8 @@ export const GlobalProvider = (props) => {
             loading,
             textModifier,
             makeRequest,
+            page,
+            setPage,
         }}>
             {props.children}
         </GlobalContext.Provider>
