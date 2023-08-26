@@ -51,6 +51,7 @@ export default function RenderItemCard () {
             </Grid>
           ))
         }
+        <Grid item marginBottom={4} xs={12}/>
     </Grid>
   );
 }
