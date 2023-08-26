@@ -4,13 +4,13 @@ import api from '../services';
 const GlobalContext = createContext();
 
 export const GlobalProvider = (props) => {
-    
+
     const [text, setText] = useState("Node")
     const [loading, setLoading] = useState(false)
     const [response, setResponse] = useState([])
 
     useEffect(() => {
-       makeRequest() 
+       makeRequest()
     },[])
 
     const makeRequest = async () => {
@@ -18,10 +18,13 @@ export const GlobalProvider = (props) => {
             setLoading(true)
             const res = await api.get(`/search/repositories?q=${text}`)
             setResponse(res.data)
-            setLoading(false)
         }
         catch(error){
             alert("A API do GitHub tem um limite de requisições, aguarde um momento para buscar novamente")
+            setResponse([])
+        }
+        finally{
+            setLoading(false)
         }
     }
 
