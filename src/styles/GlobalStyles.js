@@ -26,6 +26,17 @@ const GlobalStyles = createGlobalStyle`
     img {
         max-width: 100%;
     }
+
+    ::-webkit-scrollbar-track {
+        background-color: #aaa;
+    }
+    ::-webkit-scrollbar {
+        width: 8px;
+        background: #aaa;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #ccc;
+    }
 `
 
 export default GlobalStyles
